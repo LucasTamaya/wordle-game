@@ -2,7 +2,14 @@ import axios from "axios";
 
 import compareToSecretWord from "./compareToSecretWord";
 
-const existingWord = async (grid, setGridOne, setIndex, tabIndex, setTabIndex) => {
+const existingWord = async (
+  grid,
+  setGridOne,
+  setIndex,
+  tabIndex,
+  setTabIndex,
+  setGameResult
+) => {
   // Concaténation des éléments du tableau afin de récupérer un joli mot
   let word = "";
   grid.map((x) => {
@@ -16,8 +23,6 @@ const existingWord = async (grid, setGridOne, setIndex, tabIndex, setTabIndex) =
     .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
     // Si le mot existe
     .then((res) => {
-      alert("Mot existant");
-
       // On passe au mot suivant
       setTabIndex(tabIndex + 1);
 
@@ -25,7 +30,7 @@ const existingWord = async (grid, setGridOne, setIndex, tabIndex, setTabIndex) =
       setIndex(0);
 
       // On compare le mot saisie avec le mot secret
-      compareToSecretWord(grid, setGridOne);
+      compareToSecretWord(grid, setGridOne, tabIndex, setGameResult);
     })
     // Si le mot n'existe pas
     .catch((err) => {

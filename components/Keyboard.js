@@ -18,6 +18,7 @@ export default function Keyboard({
   setGridFive,
   gridSix,
   setGridSix,
+  setGameResult,
 }) {
   let keyboardFloor1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   let keyboardFloor2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
@@ -90,6 +91,13 @@ export default function Keyboard({
     }
   };
 
+  useEffect(() => {
+    document.addEventListener("keypress", (e) => {
+      console.log(e.key);
+      addLetter(e.key.toUpperCase());
+    });
+  }, []);
+
   const searchWord = async () => {
     console.log(gridOne);
     // Recherche pour le 1er mot
@@ -97,7 +105,14 @@ export default function Keyboard({
       // Vérifie si l'on a tapé un mot entier
       if (gridOne[4].letter !== "") {
         // Vérifie que le mot existe bien
-        existingWord(gridOne, setGridOne, setIndex, tabIndex, setTabIndex);
+        existingWord(
+          gridOne,
+          setGridOne,
+          setIndex,
+          tabIndex,
+          setTabIndex,
+          setGameResult
+        );
       }
     }
 
@@ -106,7 +121,14 @@ export default function Keyboard({
       // Vérifie si l'on a tapé un mot entier
       if (gridTwo[4].letter !== "") {
         // Vérifie que le mot existe bien
-        existingWord(gridTwo, setGridTwo, setIndex, tabIndex, setTabIndex);
+        existingWord(
+          gridTwo,
+          setGridTwo,
+          setIndex,
+          tabIndex,
+          setTabIndex,
+          setGameResult
+        );
       }
     }
 
@@ -115,7 +137,14 @@ export default function Keyboard({
       // Vérifie si l'on a tapé un mot entier
       if (gridThree[4].letter !== "") {
         // Vérifie que le mot existe bien
-        existingWord(gridThree, setGridThree, setIndex, tabIndex, setTabIndex);
+        existingWord(
+          gridThree,
+          setGridThree,
+          setIndex,
+          tabIndex,
+          setTabIndex,
+          setGameResult
+        );
       }
     }
 
@@ -124,7 +153,14 @@ export default function Keyboard({
       // Vérifie si l'on a tapé un mot entier
       if (gridFour[4].letter !== "") {
         // Vérifie que le mot existe bien
-        existingWord(gridFour, setGridFour, setIndex, tabIndex, setTabIndex);
+        existingWord(
+          gridFour,
+          setGridFour,
+          setIndex,
+          tabIndex,
+          setTabIndex,
+          setGameResult
+        );
       }
     }
 
@@ -133,7 +169,14 @@ export default function Keyboard({
       // Vérifie si l'on a tapé un mot entier
       if (gridFive[4].letter !== "") {
         // Vérifie que le mot existe bien
-        existingWord(gridFive, setGridFive, setIndex, tabIndex, setTabIndex);
+        existingWord(
+          gridFive,
+          setGridFive,
+          setIndex,
+          tabIndex,
+          setTabIndex,
+          setGameResult
+        );
       }
     }
 
@@ -142,65 +185,69 @@ export default function Keyboard({
       // Vérifie si l'on a tapé un mot entier
       if (gridSix[4].letter !== "") {
         // Vérifie que le mot existe bien
-        existingWord(gridSix, setGridSix, setIndex, tabIndex, setTabIndex);
+        existingWord(
+          gridSix,
+          setGridSix,
+          setIndex,
+          tabIndex,
+          setTabIndex,
+          setGameResult
+        );
       }
     }
   };
 
-  useEffect(() => {
-    searchWord();
-  }, [gridOne, gridTwo, gridThree, gridFour, gridFive, gridSix]);
+  // useEffect(() => {
+  //    searchWord();
+  // }, [gridOne, gridTwo, gridThree, gridFour, gridFive, gridSix]);
 
   return (
     <>
-      {/* {wordError && <p>This word doesn't exists</p>} */}
-      <div className="pt-7">
-        <div className="flex flex-col items-center gap-y-1">
-          <div className="flex gap-x-1">
-            {keyboardFloor1.map((x) => (
-              <button
-                key={v4()}
-                className="w-[25px] md:w-[43px] h-[43px] md:h-[57px] border-2 border-green-500 cursor-pointer p-2 flex justify-center items-center"
-                onClick={(e) => addLetter(e.currentTarget.innerText)}
-              >
-                {x}
-              </button>
-            ))}
-          </div>
-          <div className="flex gap-x-1">
-            {keyboardFloor2.map((x) => (
-              <button
-                key={v4()}
-                className="w-[25px] md:w-[43px] h-[43px] md:h-[57px] border-2 border-green-500 cursor-pointer p-2 flex justify-center items-center"
-                onClick={(e) => addLetter(e.currentTarget.innerText)}
-              >
-                {x}
-              </button>
-            ))}
-          </div>
-          <div className="flex gap-x-1">
+      <div className="flex flex-col items-center gap-y-1">
+        <div className="flex gap-x-1">
+          {keyboardFloor1.map((x) => (
             <button
-              className="w-[60px] md:w-[70px] h-[43px] md:h-[57px] border-2 border-green-500 cursor-pointer p-2 flex justify-center items-center"
+              key={v4()}
+              className="w-[25px] md:w-[43px] h-[43px] md:h-[57px] bg-gray-400 rounded text-white font-bold cursor-pointer active:bg-gray-500 p-2 flex justify-center items-center"
               onClick={(e) => addLetter(e.currentTarget.innerText)}
             >
-              Enter
+              {x}
             </button>
-            {keyboardFloor3.map((x) => (
-              <button
-                key={v4()}
-                className="w-[25px] md:w-[43px] h-[43px] md:h-[57px] border-2 border-green-500 cursor-pointer p-2 flex justify-center items-center"
-                onClick={(e) => addLetter(e.currentTarget.innerText)}
-              >
-                {x}
-              </button>
-            ))}
+          ))}
+        </div>
+        <div className="flex gap-x-1">
+          {keyboardFloor2.map((x) => (
             <button
-              className="w-[60px] md:w-[70px] h-[43px] md:h-[57px] border-2 border-green-500 cursor-pointer p-2 flex justify-center items-center"
-              onClick={() => deleteLetter()}
+              key={v4()}
+              className="w-[25px] md:w-[43px] h-[43px] md:h-[57px] bg-gray-400 rounded text-white font-bold cursor-pointer active:bg-gray-500 p-2 flex justify-center items-center"
+              onClick={(e) => addLetter(e.currentTarget.innerText)}
             >
-              Delete
+              {x}
             </button>
-          </div>
+          ))}
+        </div>
+        <div className="flex gap-x-1">
+          <button
+            className="w-[60px] md:w-[70px] h-[43px] md:h-[57px] bg-gray-400 rounded text-white font-bold cursor-pointer active:bg-gray-500 p-2 flex justify-center items-center"
+            onClick={() => searchWord()}
+          >
+            Enter
+          </button>
+          {keyboardFloor3.map((x) => (
+            <button
+              key={v4()}
+              className="w-[25px] md:w-[43px] h-[43px] md:h-[57px] bg-gray-400 rounded text-white font-bold cursor-pointer active:bg-gray-500 p-2 flex justify-center items-center"
+              onClick={(e) => addLetter(e.currentTarget.innerText)}
+            >
+              {x}
+            </button>
+          ))}
+          <button
+            className="w-[60px] md:w-[70px] h-[43px] md:h-[57px] bg-gray-400 rounded text-white font-bold cursor-pointer active:bg-gray-500 p-2 flex justify-center items-center"
+            onClick={() => deleteLetter()}
+          >
+            Delete
+          </button>
         </div>
       </div>
     </>

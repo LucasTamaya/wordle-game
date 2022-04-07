@@ -6,7 +6,7 @@ const addLetterToGrid = (letter, grid, setGrid, index, setIndex) => {
   const updateGridOne = Array.from(grid);
   // Ajout de la lettre
   updateGridOne[index] = { letter: letter, status: undefined };
-  // console.log(updateGridOne);
+  console.log(updateGridOne);
   // Update de la gridOne
   setGrid(updateGridOne);
   // Incrémentation de l'index afin de passer à la case suivante lorsqu'on sélectionne une nouvelle lettre

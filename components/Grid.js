@@ -1,7 +1,12 @@
 import { v4 } from "uuid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import SignalCellularAltIcon from "@mui/icons-material/SignalCellularAlt";
 
 import Keyboard from "./Keyboard";
+import LostGame from "./LostGame";
+import GameWon from "./GameWon";
 
 export default function Grid() {
   let emptyGrid = new Array(5);
@@ -15,20 +20,34 @@ export default function Grid() {
   const [gridFive, setGridFive] = useState(emptyGrid);
   const [gridSix, setGridSix] = useState(emptyGrid);
 
+  const [gameResult, setGameResult] = useState("");
+
   return (
-    <div className="p-7">
-      <div className="mx-auto w-fit grid grid-rows-5 grid-cols-5 gap-2 bg-blue-500 p-2">
+    <div className="p-5">
+      <h1 className="text-center text-white text-2xl sm:text-3xl font-bold mb-3">
+        Custom Wordle Game
+      </h1>
+      <div className="mx-auto flex justify-center items-center gap-x-3">
+        <InfoOutlinedIcon className="text-white cursor-pointer" />
+        <Link href="/create-wordle">
+          <p className="text-sky-700 font-bold bg-gray-800 rounded p-2 cursor-pointer hover:text-sky-500">
+            Make your own wordle
+          </p>
+        </Link>
+        <SignalCellularAltIcon className="text-white cursor-pointer" />
+      </div>
+      <div className="mx-auto w-fit grid grid-rows-5 grid-cols-5 gap-1 p-2">
         {gridOne.map((x) => (
           <div
             key={v4()}
-            className={`w-[40px] h-[40px] md:w-[62px] md:h-[62px] border-2 border-red-500 mx-auto cursor-pointer flex justify-center items-center ${
+            className={`w-[40px] h-[40px] md:w-[62px] md:h-[62px] text-white text-xl md:text-3xl font-bold border-2 border-gray-700 rounded mx-auto cursor-pointer flex justify-center items-center ${
               x.status === 0
-                ? "bg-gray-500"
+                ? "bg-gray-600 border-none"
                 : x.status === 1
-                ? "bg-yellow-500"
+                ? "bg-yellow-500 border-none"
                 : x.status === 2
-                ? "bg-green-500"
-                : "bg-white"
+                ? "bg-green-500 border-none"
+                : "bg-transparent"
             }`}
           >
             {x.letter}
@@ -38,14 +57,14 @@ export default function Grid() {
         {gridTwo.map((x) => (
           <div
             key={v4()}
-            className={`w-[40px] h-[40px] md:w-[62px] md:h-[62px] border-2 border-red-500 mx-auto cursor-pointer flex justify-center items-center ${
+            className={`w-[40px] h-[40px] md:w-[62px] md:h-[62px] text-white text-xl md:text-3xl font-bold border-2 border-gray-700 rounded mx-auto cursor-pointer flex justify-center items-center ${
               x.status === 0
-                ? "bg-gray-500"
+                ? "bg-gray-600 border-none"
                 : x.status === 1
-                ? "bg-yellow-500"
+                ? "bg-yellow-500 border-none"
                 : x.status === 2
-                ? "bg-green-500"
-                : "bg-white"
+                ? "bg-green-500 border-none"
+                : "bg-transparent"
             }`}
           >
             {x.letter}
@@ -55,14 +74,14 @@ export default function Grid() {
         {gridThree.map((x) => (
           <div
             key={v4()}
-            className={`w-[40px] h-[40px] md:w-[62px] md:h-[62px] border-2 border-red-500 mx-auto cursor-pointer flex justify-center items-center ${
+            className={`w-[40px] h-[40px] md:w-[62px] md:h-[62px] text-white text-xl md:text-3xl font-bold border-2 border-gray-700 rounded mx-auto cursor-pointer flex justify-center items-center ${
               x.status === 0
-                ? "bg-gray-500"
+                ? "bg-gray-600 border-none"
                 : x.status === 1
-                ? "bg-yellow-500"
+                ? "bg-yellow-500 border-none"
                 : x.status === 2
-                ? "bg-green-500"
-                : "bg-white"
+                ? "bg-green-500 border-none"
+                : "bg-transparent"
             }`}
           >
             {x.letter}
@@ -72,14 +91,14 @@ export default function Grid() {
         {gridFour.map((x) => (
           <div
             key={v4()}
-            className={`w-[40px] h-[40px] md:w-[62px] md:h-[62px] border-2 border-red-500 mx-auto cursor-pointer flex justify-center items-center ${
+            className={`w-[40px] h-[40px] md:w-[62px] md:h-[62px] text-white text-xl md:text-3xl font-bold border-2 border-gray-700 rounded mx-auto cursor-pointer flex justify-center items-center ${
               x.status === 0
-                ? "bg-gray-500"
+                ? "bg-gray-600 border-none"
                 : x.status === 1
-                ? "bg-yellow-500"
+                ? "bg-yellow-500 border-none"
                 : x.status === 2
-                ? "bg-green-500"
-                : "bg-white"
+                ? "bg-green-500 border-none"
+                : "bg-transparent"
             }`}
           >
             {x.letter}
@@ -89,14 +108,14 @@ export default function Grid() {
         {gridFive.map((x) => (
           <div
             key={v4()}
-            className={`w-[40px] h-[40px] md:w-[62px] md:h-[62px] border-2 border-red-500 mx-auto cursor-pointer flex justify-center items-center ${
+            className={`w-[40px] h-[40px] md:w-[62px] md:h-[62px] text-white text-xl md:text-3xl font-bold border-2 border-gray-700 rounded mx-auto cursor-pointer flex justify-center items-center ${
               x.status === 0
-                ? "bg-gray-500"
+                ? "bg-gray-600 border-none"
                 : x.status === 1
-                ? "bg-yellow-500"
+                ? "bg-yellow-500 border-none"
                 : x.status === 2
-                ? "bg-green-500"
-                : "bg-white"
+                ? "bg-green-500 border-none"
+                : "bg-transparent"
             }`}
           >
             {x.letter}
@@ -106,34 +125,40 @@ export default function Grid() {
         {gridSix.map((x) => (
           <div
             key={v4()}
-            className={`w-[40px] h-[40px] md:w-[62px] md:h-[62px] border-2 border-red-500 mx-auto cursor-pointer flex justify-center items-center ${
+            className={`w-[40px] h-[40px] md:w-[62px] md:h-[62px] text-white text-xl md:text-3xl font-bold border-2 border-gray-700 rounded mx-auto cursor-pointer flex justify-center items-center ${
               x.status === 0
-                ? "bg-gray-500"
+                ? "bg-gray-600 border-none"
                 : x.status === 1
-                ? "bg-yellow-500"
+                ? "bg-yellow-500 border-none"
                 : x.status === 2
-                ? "bg-green-500"
-                : "bg-white"
+                ? "bg-green-500 border-none"
+                : "bg-transparent"
             }`}
           >
             {x.letter}
           </div>
         ))}
       </div>
-      <Keyboard
-        gridOne={gridOne}
-        setGridOne={setGridOne}
-        gridTwo={gridTwo}
-        setGridTwo={setGridTwo}
-        gridThree={gridThree}
-        setGridThree={setGridThree}
-        gridFour={gridFour}
-        setGridFour={setGridFour}
-        gridFive={gridFive}
-        setGridFive={setGridFive}
-        gridSix={gridSix}
-        setGridSix={setGridSix}
-      />
+      {!gameResult && (
+        <Keyboard
+          gridOne={gridOne}
+          setGridOne={setGridOne}
+          gridTwo={gridTwo}
+          setGridTwo={setGridTwo}
+          gridThree={gridThree}
+          setGridThree={setGridThree}
+          gridFour={gridFour}
+          setGridFour={setGridFour}
+          gridFive={gridFive}
+          setGridFive={setGridFive}
+          gridSix={gridSix}
+          setGridSix={setGridSix}
+          setGameResult={setGameResult}
+        />
+      )}
+
+      {gameResult === "Lost" && <LostGame />}
+      {gameResult === "Won" && <GameWon />}
     </div>
   );
 }
