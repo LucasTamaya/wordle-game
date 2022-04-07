@@ -4,13 +4,9 @@ import { useState } from "react";
 import Keyboard from "./Keyboard";
 
 export default function Grid() {
-  // let emptyGrid = new Array(30);
-  // emptyGrid.fill("");
-  // //   // Création de la grid vide
-  // const [grid, setGrid] = useState(emptyGrid);
-
   let emptyGrid = new Array(5);
-  emptyGrid.fill("");
+  // emptyGrid.fill(""); MARCHE !!
+  emptyGrid.fill({ letter: "", status: undefined });
 
   const [gridOne, setGridOne] = useState(emptyGrid);
   const [gridTwo, setGridTwo] = useState(emptyGrid);
@@ -25,54 +21,102 @@ export default function Grid() {
         {gridOne.map((x) => (
           <div
             key={v4()}
-            className="w-[40px] h-[40px] md:w-[62px] md:h-[62px] border-2 border-red-500 mx-auto cursor-pointer flex justify-center items-center"
+            className={`w-[40px] h-[40px] md:w-[62px] md:h-[62px] border-2 border-red-500 mx-auto cursor-pointer flex justify-center items-center ${
+              x.status === 0
+                ? "bg-gray-500"
+                : x.status === 1
+                ? "bg-yellow-500"
+                : x.status === 2
+                ? "bg-green-500"
+                : "bg-white"
+            }`}
           >
-            {x}
+            {x.letter}
           </div>
         ))}
 
         {gridTwo.map((x) => (
           <div
             key={v4()}
-            className="w-[40px] h-[40px] md:w-[62px] md:h-[62px] border-2 border-red-500 mx-auto cursor-pointer flex justify-center items-center"
+            className={`w-[40px] h-[40px] md:w-[62px] md:h-[62px] border-2 border-red-500 mx-auto cursor-pointer flex justify-center items-center ${
+              x.status === 0
+                ? "bg-gray-500"
+                : x.status === 1
+                ? "bg-yellow-500"
+                : x.status === 2
+                ? "bg-green-500"
+                : "bg-white"
+            }`}
           >
-            {x}
+            {x.letter}
           </div>
         ))}
 
         {gridThree.map((x) => (
           <div
             key={v4()}
-            className="w-[40px] h-[40px] md:w-[62px] md:h-[62px] border-2 border-red-500 mx-auto cursor-pointer flex justify-center items-center"
+            className={`w-[40px] h-[40px] md:w-[62px] md:h-[62px] border-2 border-red-500 mx-auto cursor-pointer flex justify-center items-center ${
+              x.status === 0
+                ? "bg-gray-500"
+                : x.status === 1
+                ? "bg-yellow-500"
+                : x.status === 2
+                ? "bg-green-500"
+                : "bg-white"
+            }`}
           >
-            {x}
+            {x.letter}
           </div>
         ))}
 
         {gridFour.map((x) => (
           <div
             key={v4()}
-            className="w-[40px] h-[40px] md:w-[62px] md:h-[62px] border-2 border-red-500 mx-auto cursor-pointer flex justify-center items-center"
+            className={`w-[40px] h-[40px] md:w-[62px] md:h-[62px] border-2 border-red-500 mx-auto cursor-pointer flex justify-center items-center ${
+              x.status === 0
+                ? "bg-gray-500"
+                : x.status === 1
+                ? "bg-yellow-500"
+                : x.status === 2
+                ? "bg-green-500"
+                : "bg-white"
+            }`}
           >
-            {x}
+            {x.letter}
           </div>
         ))}
 
         {gridFive.map((x) => (
           <div
             key={v4()}
-            className="w-[40px] h-[40px] md:w-[62px] md:h-[62px] border-2 border-red-500 mx-auto cursor-pointer flex justify-center items-center"
+            className={`w-[40px] h-[40px] md:w-[62px] md:h-[62px] border-2 border-red-500 mx-auto cursor-pointer flex justify-center items-center ${
+              x.status === 0
+                ? "bg-gray-500"
+                : x.status === 1
+                ? "bg-yellow-500"
+                : x.status === 2
+                ? "bg-green-500"
+                : "bg-white"
+            }`}
           >
-            {x}
+            {x.letter}
           </div>
         ))}
 
         {gridSix.map((x) => (
           <div
             key={v4()}
-            className="w-[40px] h-[40px] md:w-[62px] md:h-[62px] border-2 border-red-500 mx-auto cursor-pointer flex justify-center items-center"
+            className={`w-[40px] h-[40px] md:w-[62px] md:h-[62px] border-2 border-red-500 mx-auto cursor-pointer flex justify-center items-center ${
+              x.status === 0
+                ? "bg-gray-500"
+                : x.status === 1
+                ? "bg-yellow-500"
+                : x.status === 2
+                ? "bg-green-500"
+                : "bg-white"
+            }`}
           >
-            {x}
+            {x.letter}
           </div>
         ))}
       </div>

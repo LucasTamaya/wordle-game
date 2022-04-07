@@ -25,8 +25,6 @@ export default function Keyboard({
 
   const [index, setIndex] = useState(0);
   const [tabIndex, setTabIndex] = useState(0);
-  // const [wordError, setWordError] = useState(false);
-  const [deleteMode, setDeleteMode] = useState(false);
 
   const addLetter = (letter) => {
     // Ajout de lettre pour le 1er mot
@@ -97,54 +95,54 @@ export default function Keyboard({
     // Recherche pour le 1er mot
     if (tabIndex === 0) {
       // Vérifie si l'on a tapé un mot entier
-      if (gridOne[4] !== "") {
+      if (gridOne[4].letter !== "") {
         // Vérifie que le mot existe bien
-        existingWord(gridOne, setIndex, tabIndex, setTabIndex);
+        existingWord(gridOne, setGridOne, setIndex, tabIndex, setTabIndex);
       }
     }
 
     // Recherche pour le 2e mot
     if (tabIndex === 1) {
       // Vérifie si l'on a tapé un mot entier
-      if (gridTwo[4] !== "") {
+      if (gridTwo[4].letter !== "") {
         // Vérifie que le mot existe bien
-        existingWord(gridTwo, setIndex, tabIndex, setTabIndex);
+        existingWord(gridTwo, setGridTwo, setIndex, tabIndex, setTabIndex);
       }
     }
 
     // Recherche pour le 3e mot
     if (tabIndex === 2) {
       // Vérifie si l'on a tapé un mot entier
-      if (gridThree[4] !== "") {
+      if (gridThree[4].letter !== "") {
         // Vérifie que le mot existe bien
-        existingWord(gridThree, setIndex, tabIndex, setTabIndex);
+        existingWord(gridThree, setGridThree, setIndex, tabIndex, setTabIndex);
       }
     }
 
     // Recherche pour le 4e mot
     if (tabIndex === 3) {
       // Vérifie si l'on a tapé un mot entier
-      if (gridFour[4] !== "") {
+      if (gridFour[4].letter !== "") {
         // Vérifie que le mot existe bien
-        existingWord(gridFour, setIndex, tabIndex, setTabIndex);
+        existingWord(gridFour, setGridFour, setIndex, tabIndex, setTabIndex);
       }
     }
 
     // Recherche pour le 5e mot
     if (tabIndex === 4) {
       // Vérifie si l'on a tapé un mot entier
-      if (gridFive[4] !== "") {
+      if (gridFive[4].letter !== "") {
         // Vérifie que le mot existe bien
-        existingWord(gridFive, setIndex, tabIndex, setTabIndex);
+        existingWord(gridFive, setGridFive, setIndex, tabIndex, setTabIndex);
       }
     }
 
     // Recherche pour le 6e mot
     if (tabIndex === 5) {
       // Vérifie si l'on a tapé un mot entier
-      if (gridSix[4] !== "") {
+      if (gridSix[4].letter !== "") {
         // Vérifie que le mot existe bien
-        existingWord(gridSix, setIndex, tabIndex, setTabIndex);
+        existingWord(gridSix, setGridSix, setIndex, tabIndex, setTabIndex);
       }
     }
   };
