@@ -19,6 +19,7 @@ export default function Keyboard({
   gridSix,
   setGridSix,
   setGameResult,
+  secretWord,
 }) {
   let keyboardFloor1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   let keyboardFloor2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
@@ -91,13 +92,6 @@ export default function Keyboard({
     }
   };
 
-  useEffect(() => {
-    document.addEventListener("keypress", (e) => {
-      console.log(e.key);
-      addLetter(e.key.toUpperCase());
-    });
-  }, []);
-
   const searchWord = async () => {
     console.log(gridOne);
     // Recherche pour le 1er mot
@@ -111,7 +105,8 @@ export default function Keyboard({
           setIndex,
           tabIndex,
           setTabIndex,
-          setGameResult
+          setGameResult,
+          secretWord
         );
       }
     }
@@ -127,7 +122,8 @@ export default function Keyboard({
           setIndex,
           tabIndex,
           setTabIndex,
-          setGameResult
+          setGameResult,
+          secretWord,
         );
       }
     }
@@ -143,7 +139,8 @@ export default function Keyboard({
           setIndex,
           tabIndex,
           setTabIndex,
-          setGameResult
+          setGameResult,
+          secretWord,
         );
       }
     }
@@ -159,7 +156,8 @@ export default function Keyboard({
           setIndex,
           tabIndex,
           setTabIndex,
-          setGameResult
+          setGameResult,
+          secretWord,
         );
       }
     }
@@ -175,7 +173,8 @@ export default function Keyboard({
           setIndex,
           tabIndex,
           setTabIndex,
-          setGameResult
+          setGameResult,
+          secretWord,
         );
       }
     }
@@ -191,7 +190,8 @@ export default function Keyboard({
           setIndex,
           tabIndex,
           setTabIndex,
-          setGameResult
+          setGameResult,
+          secretWord,
         );
       }
     }

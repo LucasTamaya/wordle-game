@@ -1,16 +1,16 @@
 import { v4 } from "uuid";
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import SignalCellularAltIcon from "@mui/icons-material/SignalCellularAlt";
 
 import Keyboard from "./Keyboard";
 import LostGame from "./LostGame";
 import GameWon from "./GameWon";
+import CreateWordle from "./CreateWordle";
+import GameInfo from "./GameInfo";
 
-export default function Grid() {
+export default function Grid({ secretWord }) {
   let emptyGrid = new Array(5);
-  // emptyGrid.fill(""); MARCHE !!
   emptyGrid.fill({ letter: "", status: undefined });
 
   const [gridOne, setGridOne] = useState(emptyGrid);
@@ -22,18 +22,26 @@ export default function Grid() {
 
   const [gameResult, setGameResult] = useState("");
 
+  const [showCreateModal, setShowCreateModal] = useState(false);
+
+  const [showGameInfo, setShowGameInfo] = useState(true);
+
   return (
     <div className="p-5">
       <h1 className="text-center text-white text-2xl sm:text-3xl font-bold mb-3">
         Custom Wordle Game
       </h1>
       <div className="mx-auto flex justify-center items-center gap-x-3">
-        <InfoOutlinedIcon className="text-white cursor-pointer" />
-        <Link href="/create-wordle">
-          <p className="text-sky-700 font-bold bg-gray-800 rounded p-2 cursor-pointer hover:text-sky-500">
-            Make your own wordle
-          </p>
-        </Link>
+        <InfoOutlinedIcon
+          className="text-white cursor-pointer"
+          onClick={() => setShowGameInfo(true)}
+        />
+        <p
+          className="text-sky-700 font-bold bg-gray-800 rounded p-2 cursor-pointer hover:text-sky-500"
+          onClick={() => setShowCreateModal(true)}
+        >
+          Make your own wordle
+        </p>
         <SignalCellularAltIcon className="text-white cursor-pointer" />
       </div>
       <div className="mx-auto w-fit grid grid-rows-5 grid-cols-5 gap-1 p-2">
@@ -154,11 +162,25 @@ export default function Grid() {
           gridSix={gridSix}
           setGridSix={setGridSix}
           setGameResult={setGameResult}
+          secretWord={secretWord}
         />
       )}
 
-      {gameResult === "Lost" && <LostGame />}
-      {gameResult === "Won" && <GameWon />}
+      {gameResult === "Lost" && <LostGame setGameResult={setGameResult} />}
+      {gameResult === "Won" && (
+        <GameWon
+          setGameResult={setGameResult}
+          setShowCreateModal={setShowCreateModal}
+          showCreateModal={showCreateModal}
+          secretWord={secretWord}
+        />
+      )}
+
+      {showGameInfo && <GameInfo setShowGameInfo={setShowGameInfo} />}
+
+      {showCreateModal && (
+        <CreateWordle setShowCreateModal={setShowCreateModal} />
+      )}
     </div>
   );
 }

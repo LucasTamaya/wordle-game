@@ -4,12 +4,15 @@ import compareToSecretWord from "./compareToSecretWord";
 
 const existingWord = async (
   grid,
-  setGridOne,
+  setGrid,
   setIndex,
   tabIndex,
   setTabIndex,
-  setGameResult
+  setGameResult,
+  secretWord,
 ) => {
+  
+
   // Concaténation des éléments du tableau afin de récupérer un joli mot
   let word = "";
   grid.map((x) => {
@@ -30,7 +33,7 @@ const existingWord = async (
       setIndex(0);
 
       // On compare le mot saisie avec le mot secret
-      compareToSecretWord(grid, setGridOne, tabIndex, setGameResult);
+      compareToSecretWord(grid, setGrid, tabIndex, setGameResult, secretWord);
     })
     // Si le mot n'existe pas
     .catch((err) => {

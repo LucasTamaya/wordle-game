@@ -1,6 +1,12 @@
-let secretWord = ["N", "A", "T", "A", "L"];
+// let secretWord = ["N", "A", "T", "A", "L"];
 
-const compareToSecretWord = (grid, setGrid, tabIndex, setGameResult) => {
+const compareToSecretWord = (
+  grid,
+  setGrid,
+  tabIndex,
+  setGameResult,
+  secretWord,
+) => {
   // Copie de la grille
   const updateArray = Array.from(grid);
 

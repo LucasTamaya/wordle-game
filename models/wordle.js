@@ -3,10 +3,8 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const wordleSchema = new Schema({
-  title: String,
-  description: String,
-  imgUrl: String,
-  authorId: String,
+  originalWord: String,
+  encryptedWord: String,
 });
 
-module.exports = mongoose.model("Wordle", wordleSchema);
+export default mongoose.models.Wordle || mongoose.model("Wordle", wordleSchema);

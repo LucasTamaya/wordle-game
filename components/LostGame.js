@@ -1,7 +1,7 @@
 import DoDisturbIcon from "@mui/icons-material/DoDisturb";
 import CloseIcon from "@mui/icons-material/Close";
 
-export default function LostGame() {
+export default function LostGame({ setGameResult }) {
   return (
     <div className="absolute top-0 left-0 w-screen h-screen bg-gray-500/80 p-7 flex justify-center items-center">
       <div className="relative w-[350px] bg-stone-800 p-5 rounded-xl flex flex-col gap-y-3">
@@ -12,6 +12,7 @@ export default function LostGame() {
           <CloseIcon
             sx={{ fontSize: 10 }}
             className="text-white cursor-pointer"
+            onClick={() => setGameResult("")}
           />
         </div>
         <h1 className="text-center text-white font-bold">You Lose !</h1>
